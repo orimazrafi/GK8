@@ -41,7 +41,12 @@ export default function useFetchScroll({
           return [
             ...new Set([
               ...prevList,
-              ...res?.data?.result?.map((b) => b.blockNumber),
+              ...res?.data?.result?.map((r) => ({
+                number: r?.blockNumber,
+                time: r?.timestamp,
+                hash: r.hash,
+                confirmations: r.confirmations,
+              })),
             ]),
           ];
         });
