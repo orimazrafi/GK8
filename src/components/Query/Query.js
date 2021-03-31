@@ -15,6 +15,7 @@ const InputWrapper = styled.label`
   font-weight:600;
   input{
     margin-left:0.625rem;
+    margin-bottom:0.625rem;
     font-size:1rem;
     padding:.5rem;
     border-radius:.25rem;

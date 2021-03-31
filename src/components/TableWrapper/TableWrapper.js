@@ -1,5 +1,5 @@
 const TableWrapper = ({ children, list }) => (
-    <table>
+    <table style={{ paddingBottom: "30px" }}>
         {list?.length > 0 &&
             <thead>
                 <tr className="transaction--headline">
@@ -14,7 +14,6 @@ const TableWrapper = ({ children, list }) => (
         <tbody>
             {children}
         </tbody>
-
     </table>
 )
 

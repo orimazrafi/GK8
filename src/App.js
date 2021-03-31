@@ -16,7 +16,7 @@ const url = `https://api.etherscan.io/api?module=account&action=tokennfttx&sort=
 function App() {
   const [query, setQuery] = useState("");
   const [pageNumber, setPageNumber] = useState(1);
-  const { list, hasMore, loading, error } = useFetchScroll({ url, query, pageNumber, offset: 1000, maxPage: 10 });
+  const { list, hasMore, loading, error } = useFetchScroll({ url, query, pageNumber, offset: 100, maxPage: 100 });
 
   const observer = useRef();
   const lastTransactionElementRef = useCallback((node) => {

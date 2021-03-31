@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-//"0x06012c8cf97bead5deae237070f9587f8e7a266d"
+//""
 export default function useFetchScroll({
   url,
   query: contractaddress,
