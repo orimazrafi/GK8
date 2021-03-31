@@ -1,21 +1,24 @@
+import Transaction from "../Transaction/Transaction"
+import TableWrapper from "../TableWrapper/TableWrapper"
 const Transactions = ({ list, lastTransactionElementRef }) => {
   return (
-    <>
+    <TableWrapper list={list}>
       {list?.map((transaction, index) => {
-        if (list.length === index + 1) {
-          return (
-            <div ref={lastTransactionElementRef} key={transaction.hash}>
-              {transaction?.number}
-              {new Date(parseInt(transaction?.time) * 1000).toLocaleDateString(
-                "en-US"
-              )}
-            </div>
-          );
-        } else {
-          return <div key={transaction.hash}>{transaction?.number}</div>;
-        }
+        return (
+          <Transaction
+            key={transaction.hash}
+            lastTransactionElementRef={list.length === index + 1 ? lastTransactionElementRef : null}
+            number={transaction?.number}
+            date={new Date(parseInt(transaction?.time) * 1000).toLocaleDateString(
+              "en-US"
+            )}
+            confirmation={transaction.confirmation}
+            hash={transaction.hash}
+            index={index + 1}
+          />
+        );
       })}
-    </>
+    </TableWrapper>
   );
 };
 export default Transactions;

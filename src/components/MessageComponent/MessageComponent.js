@@ -17,7 +17,6 @@ const MessageComponent = ({ loading, list, query, error }) => {
 export default MessageComponent;
 
 const MessageWrapper = styled.div`
-  font-size: 20px;
+  font-size: 1.25rem;
   font-weight: 600;
-  margin-top: 10px;
 `;
