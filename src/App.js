@@ -1,6 +1,10 @@
 import { useState, useRef, useCallback } from "react";
 import "./App.css";
+import styled from "styled-components";
 import useFetchScroll from "./useFetchScroll";
+import Query from "./components/Query/Query";
+import Transactions from "./components/Transactions/Transactions";
+import MessageComponent from "./components/MessageComponent/MessageComponent";
 const url =
   "https://api.etherscan.io/api?module=account&action=tokennfttx&sort=asc&apikey=4UF4GPKSKW7G6DIJWN29DDB9MY3KS79GK1";
 function App() {
@@ -32,44 +36,40 @@ function App() {
     setPageNumber(1);
   }
   return (
-    <div style={{ textAlign: "center" }}>
-      <div
-        style={{
-          display: "flex",
-          alignContent: "center",
-          justifyContent: "center",
-          flexDirection: "column",
-        }}
-      >
-        <label>
-          Ethereum address
-          <input
-            value={query}
-            onChange={handleSearch}
-            placeholder="Address..."
+    <CenterWrapper>
+      <FlexColumnWrapper>
+        <Query
+          label="Ethereum address"
+          value={query}
+          handleChange={handleSearch}
+          placeholder="Address..."
+        />
+        <FlexColumnWrapper>
+          <Transactions
+            list={list}
+            lastTransactionElementRef={lastTransactionElementRef}
           />
-        </label>
-        <div>
-          {list?.map((transaction, index) => {
-            if (list.length === index + 1) {
-              return (
-                <div ref={lastTransactionElementRef} key={transaction}>
-                  {transaction}
-                </div>
-              );
-            } else {
-              return <div key={transaction}>{transaction}</div>;
-            }
-          })}
-          <div>
-            {!loading && !list?.length && query && "try a different query..."}
-          </div>
-          <div>{loading && "Loading..."}</div>
-          <div>{error && "Error"}</div>
-        </div>
-      </div>
-    </div>
+          <MessageComponent
+            loading={loading}
+            list={list}
+            query={query}
+            error={error}
+          />
+        </FlexColumnWrapper>
+      </FlexColumnWrapper>
+    </CenterWrapper>
   );
 }
 
 export default App;
+
+const CenterWrapper = styled.div`
+  text-align: center;
+`;
+
+const FlexColumnWrapper = styled.div`
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  flex-direction: column;
+`;
