@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-//""
 export default function useFetchScroll({
   url,
   query: contractaddress,
@@ -32,7 +31,6 @@ export default function useFetchScroll({
       cancelToken: new axios.CancelToken((c) => (cancel = c)),
     })
       .then((res) => {
-        console.log({ res });
         if (res.data.status !== "1") {
           setLoading(false);
           return setList([]);
