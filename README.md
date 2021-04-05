@@ -10,9 +10,6 @@ create .env.development.local file in the root of the project. next to package.j
 after that restart the server. and insert a valid Ethereum address for example(0x06012c8cf97bead5deae237070f9587f8e7a266d)and you should see the scrollable results. 
 The app is for querying gifs and selecting gifs as you'r favourits. Enjoy.
 
-![alt text](https://res.cloudinary.com/dyloyoawh/image/upload/v1617208277/envfile_oxdhyk.png)
-
-![alt text](https://res.cloudinary.com/dyloyoawh/image/upload/v1617208268/apikey_rz7uun.png)
 
 ![alt text](https://res.cloudinary.com/dyloyoawh/image/upload/v1617208284/scrollable_pmwzmr.png)
 
