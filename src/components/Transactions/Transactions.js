@@ -6,7 +6,7 @@ const Transactions = ({ list, lastTransactionElementRef }) => {
       {list?.map((transaction, index) => {
         return (
           <Transaction
-            key={transaction.hash}
+            key={Math.random()}
             lastTransactionElementRef={list.length === index + 1 ? lastTransactionElementRef : null}
             number={transaction?.number}
             date={new Date(parseInt(transaction?.time) * 1000).toLocaleDateString(

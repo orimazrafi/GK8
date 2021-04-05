@@ -1,7 +1,7 @@
 
 const Transaction = ({ lastTransactionElementRef, index, number, date, confirmation, hash }) => {
     return (
-        <tr ref={lastTransactionElementRef} key={hash} className="transaction">
+        <tr ref={lastTransactionElementRef} key={Math.random()} className="transaction">
             <td>{index}.</td>
             <td> {number}</td>
             <td>   {date}</td>

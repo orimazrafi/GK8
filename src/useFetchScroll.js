@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 export default function useFetchScroll({
   url,
-  query: contractaddress,
+  query: address,
   pageNumber: page,
   offset,
   maxPage,
@@ -14,9 +14,9 @@ export default function useFetchScroll({
 
   useEffect(() => {
     setList([]);
-  }, [contractaddress]);
+  }, [address]);
   useEffect(() => {
-    if (!contractaddress) return;
+    if (!address) return;
     setLoading(true);
     setError(false);
     let cancel;
@@ -25,7 +25,7 @@ export default function useFetchScroll({
       url,
       params: {
         page,
-        contractaddress,
+        address,
         offset,
       },
       cancelToken: new axios.CancelToken((c) => (cancel = c)),
@@ -48,14 +48,16 @@ export default function useFetchScroll({
             ]),
           ];
         });
-        setHasMore(page <= maxPage);
+
+        setHasMore(() => res?.data?.result?.length < 100 || page >= maxPage ? false : true);
         setLoading(false);
       })
       .catch((e) => {
+        console.log({ e })
         if (axios.isCancel(e)) return;
         setError(true);
       });
     return () => cancel();
-  }, [url, contractaddress, page, maxPage, offset]);
+  }, [url, address, page, maxPage, offset]);
   return { loading, error, list, hasMore };
 }
